@@ -1,1 +1,7 @@
 # Admin routes
+
+bitexpert_sylius_2fa_admin_setup_2fa:
+  path: /admin/setup-2fa
+  methods: [ GET, POST, PUT ]
+  defaults:
+    _controller: 'BitExpert\SyliusTwoFactorAuthPlugin\Controller\Admin\TwoFactorController::setup'

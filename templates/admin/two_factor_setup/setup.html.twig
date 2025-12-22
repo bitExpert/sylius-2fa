@@ -1,0 +1,22 @@
+{% extends '@SyliusAdmin/shared/layout/base.html.twig' %}
+
+{% set prefixes = [
+    'sylius_admin.bitexpert_sylius_twofactor',
+    'sylius_admin.common'
+] %}
+
+{% block title %}{{ 'bitexpert_sylius_twofactor.admin.title'|trans }} | {{ parent() }}{% endblock %}
+
+{% block body %}
+    {% hook 'show' with { _prefixes: prefixes, resource, metadata, configuration } %}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% hook 'show#stylesheets' with { _prefixes: prefixes } %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% hook 'show#javascripts' with { _prefixes: prefixes } %}
+{% endblock %}

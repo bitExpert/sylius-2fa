@@ -8,3 +8,9 @@ sylius_twig_hooks:
     'sylius_admin.admin_user.update.content.form.sections.2fa':
       content:
         template: '@BitExpertSyliusTwoFactorAuthPlugin/admin/admin_user/form/sections/2fa_active.html.twig'
+
+    'sylius_admin.bitexpert_sylius_twofactor.show.content.header':
+      breadcrumbs:
+        enabled: false
+      title_block:
+        enabled: false
