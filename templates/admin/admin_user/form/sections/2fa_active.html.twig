@@ -6,7 +6,7 @@
 <a href="#" class="btn btn-secondary w-100 mt-3">{{ 'bitexpert_sylius_twofactor.admin.form.google.disable'|trans }}</a>
 {% endif %}
 
-{% if resource.isEmailAuthenticatorEnabled() == false %}
+{% if resource.isEmailAuthEnabled() == false %}
 <a href="{{ path('bitexpert_sylius_2fa_admin_setup_2fa_email') }}" class="btn btn-primary w-100 mt-3">{{ 'bitexpert_sylius_twofactor.admin.form.email.activate'|trans }}</a>
 {% else %}
 <a href="#" class="btn btn-secondary w-100 mt-3">{{ 'bitexpert_sylius_twofactor.admin.form.email.disable'|trans }}</a>

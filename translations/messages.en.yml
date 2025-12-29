@@ -16,9 +16,9 @@ bitexpert_sylius_twofactor:
         login: Login
         back: Back
   2fa_setup:
+    success: 2FA enabled successfully.
+    failed: Verification code invalid. 2FA could not be enabled.
     google:
-      success: 2FA enabled successfully.
-      failed: Verification code invalid. 2FA could not be enabled.
       previous: Back
       next: Next
       finish: Finish

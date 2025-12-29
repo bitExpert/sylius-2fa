@@ -3,6 +3,8 @@
 {% set authenticationError = hookable_metadata.context.authenticationError|default(null)  %}
 {% set authenticationErrorData = hookable_metadata.context.authenticationErrorData|default(null) %}
 {% set authCodeParameterName = hookable_metadata.context.authCodeParameterName|default(null)  %}
+{% set availableTwoFactorProviders = hookable_metadata.context.availableTwoFactorProviders|default(null)  %}
+{% set twoFactorProvider = hookable_metadata.context.twoFactorProvider|default(null)  %}
 {% set authenticationErrorData = hookable_metadata.context.authenticationErrorData|default(null)  %}
 {% set logoutPath = hookable_metadata.context.logoutPath|default(null)  %}
 
@@ -10,6 +12,22 @@
     <div class="ui left aligned very padded segment">
         {% if authenticationError %}
             <div class="alert alert-danger">{{ authenticationError | trans(authenticationErrorData ?? [] , 'SchebTwoFactorBundle') }}</div>
+        {% endif %}
+
+        {% if availableTwoFactorProviders|length > 1 %}
+            <ul class="nav nav-tabs mb-3">
+                {% for provider in availableTwoFactorProviders %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if provider == twoFactorProvider %}active{% endif %}" {% if provider == twoFactorProvider %}aria-current="page"{% endif %} href="{{ path('bitexpert_sylius_2fa_admin_login', {preferProvider: provider}) }}">{{ provider|capitalize }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% elseif twoFactorProvider is defined %}
+            <ul class="nav nav-tabs mb-3">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">{{ twoFactorProvider|capitalize }}</a>
+                </li>
+            </ul>
         {% endif %}
 
         <div class="mb-3 field">
@@ -35,6 +53,10 @@
         const containers = document.querySelectorAll('.verification-code');
         containers.forEach(container => {
             const inputs = container.querySelectorAll('.digit-input');
+            if (inputs.length > 0) {
+                inputs[0].focus();
+            }
+
             inputs.forEach((input, index) => {
                 input.addEventListener('input', () => {
                     if (input.value.length === 1 && index < inputs.length - 1) {
@@ -46,6 +68,23 @@
                     if (e.key === 'Backspace' && input.value === '' && index > 0) {
                         inputs[index - 1].focus();
                     }
+                });
+
+                input.addEventListener('paste', (e) => {
+                    e.preventDefault();
+
+                    const pastedData = e.clipboardData.getData('text').replace(/\D/g, '');
+                    if (!pastedData) {
+                        return;
+                    }
+
+                    inputs.forEach(input => input.value = '');
+                    pastedData.split('').slice(0, inputs.length).forEach((char, i) => {
+                        inputs[i].value = char;
+                    });
+
+                    const nextIndex = Math.min(pastedData.length, inputs.length - 1);
+                    inputs[nextIndex].focus();
                 });
             });
         });

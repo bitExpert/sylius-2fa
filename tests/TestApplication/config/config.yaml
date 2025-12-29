@@ -35,3 +35,4 @@ security:
             two_factor:
                 auth_form_path: bitexpert_sylius_2fa_admin_login
                 check_path: bitexpert_sylius_2fa_admin_login_check
+                multi_factor: false
