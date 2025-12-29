@@ -20,6 +20,9 @@ sylius_twig_hooks:
       main:
         template: '@BitExpertSyliusTwoFactorAuthPlugin/admin/two_factor_setup/google.html.twig'
         priority: 100
+      validation_js:
+        template: '@BitExpertSyliusTwoFactorAuthPlugin/common/validation.html.twig'
+        priority: 0
 
     # 2FA Setup wizard for Email Auth
     'sylius_admin.bitexpert_sylius_twofactor.email.show.content.header':
@@ -32,6 +35,9 @@ sylius_twig_hooks:
       main:
         template: '@BitExpertSyliusTwoFactorAuthPlugin/admin/two_factor_setup/email.html.twig'
         priority: 100
+      validation_js:
+        template: '@BitExpertSyliusTwoFactorAuthPlugin/common/validation.html.twig'
+        priority: 0
 
     # 2FA login page
     'sylius_admin.bitexpert_sylius_twofactor.login':
@@ -61,4 +67,7 @@ sylius_twig_hooks:
         priority: 100
       form:
         template: '@BitExpertSyliusTwoFactorAuthPlugin/admin/security/two_factor/page/content/form.html.twig'
+        priority: 10
+      validation_js:
+        template: '@BitExpertSyliusTwoFactorAuthPlugin/common/validation.html.twig'
         priority: 0
