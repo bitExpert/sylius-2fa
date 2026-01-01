@@ -1,17 +1,17 @@
-{% set checkPathUrl = hookable_metadata.context.checkPathUrl|default(null)  %}
-{% set checkPathRoute = hookable_metadata.context.checkPathRoute|default(null)  %}
-{% set authenticationError = hookable_metadata.context.authenticationError|default(null)  %}
+{% set checkPathUrl = hookable_metadata.context.checkPathUrl|default(null) %}
+{% set checkPathRoute = hookable_metadata.context.checkPathRoute|default(null) %}
+{% set authenticationError = hookable_metadata.context.authenticationError|default(null) %}
 {% set authenticationErrorData = hookable_metadata.context.authenticationErrorData|default(null) %}
-{% set authCodeParameterName = hookable_metadata.context.authCodeParameterName|default(null)  %}
-{% set availableTwoFactorProviders = hookable_metadata.context.availableTwoFactorProviders|default(null)  %}
-{% set twoFactorProvider = hookable_metadata.context.twoFactorProvider|default(null)  %}
-{% set authenticationErrorData = hookable_metadata.context.authenticationErrorData|default(null)  %}
-{% set logoutPath = hookable_metadata.context.logoutPath|default(null)  %}
+{% set authCodeParameterName = hookable_metadata.context.authCodeParameterName|default(null) %}
+{% set availableTwoFactorProviders = hookable_metadata.context.availableTwoFactorProviders|default(null) %}
+{% set twoFactorProvider = hookable_metadata.context.twoFactorProvider|default(null) %}
+{% set authenticationErrorData = hookable_metadata.context.authenticationErrorData|default(null) %}
+{% set logoutPath = hookable_metadata.context.logoutPath|default(null) %}
 
-<form action="{{ checkPathUrl ? checkPathUrl: path(checkPathRoute) }}" method="post" class="ui large loadable form" novalidate>
+<form action="{{ checkPathUrl ? checkPathUrl : path(checkPathRoute) }}" method="post" class="ui large loadable form" novalidate>
     <div class="ui left aligned very padded segment">
         {% if authenticationError %}
-            <div class="alert alert-danger">{{ authenticationError | trans(authenticationErrorData ?? [] , 'SchebTwoFactorBundle') }}</div>
+            <div class="alert alert-danger"> {{ authenticationError|trans(authenticationErrorData ?? [], 'SchebTwoFactorBundle') }}</div>
         {% endif %}
 
         {% if availableTwoFactorProviders|length > 1 %}

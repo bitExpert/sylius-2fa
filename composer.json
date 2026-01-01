@@ -48,7 +48,8 @@
         "symfony/intl": "^7.4",
         "symfony/runtime": "^7.4",
         "symfony/web-profiler-bundle": "^7.4",
-        "symfony/webpack-encore-bundle": "^2.2"
+        "symfony/webpack-encore-bundle": "^2.2",
+        "vincentlanglet/twig-cs-fixer": "^3.11"
     },
     "config": {
         "sort-packages": true,

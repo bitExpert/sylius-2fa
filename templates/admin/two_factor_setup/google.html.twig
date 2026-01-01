@@ -24,7 +24,7 @@
                             <h3>{{ 'bitexpert_sylius_twofactor.2fa_setup.google.steps.verify_code.headline'|trans }}</h3>
                             <div class="d-flex gap-2 verification-code">
                                 {% for i in 0..5 %}
-                                    {{ form_widget(form.children.verify_code.children.verification_code[i], {'attr': {'class': 'form-control text-center digit-input', 'maxlength': 1}}) }}
+                                    {{ form_widget(form.children.verify_code.children.verification_code[i], {attr: {class: 'form-control text-center digit-input', maxlength: 1}}) }}
                                 {% endfor %}
                             </div>
                         {% endif %}
