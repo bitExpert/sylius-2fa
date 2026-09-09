@@ -17,10 +17,10 @@ use Doctrine\ORM\Mapping as ORM;
 trait TwoFactorAuthTrait
 {
     #[ORM\Column(name: 'google_authenticator_secret', type: 'string', nullable: true)]
-    private ?string $googleAuthenticatorSecret;
+    private ?string $googleAuthenticatorSecret = null;
 
     #[ORM\Column(name: 'email_auth_code', type: 'string', nullable: true)]
-    private ?string $emailAuthCode;
+    private ?string $emailAuthCode = null;
 
     public function isTwoFactorActive(): bool
     {
