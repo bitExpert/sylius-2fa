@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 0.2.1
+
+### Added
+
+- Nothing.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- [#16](https://github.com/bitExpert/sylius-2fa/pull/16) Fix null initialize error
+
 ## 0.2.0
 
 ### Added
