@@ -9,11 +9,15 @@ jobs:
   run:
     runs-on: ${{ matrix.operating-system }}
     strategy:
+      fail-fast: false
       matrix:
         operating-system: ['ubuntu-latest']
         dependencies: ['lowest', 'highest']
-        symfony: ['^7.4']
-        php-versions: ['8.4']
+        symfony: ['^7.4', '^8.0']
+        php-versions: ['8.3', '8.4']
+        exclude:
+          - symfony: '^8.0'
+            php-versions: '8.3'
 
     steps:
       - name: Checkout repo

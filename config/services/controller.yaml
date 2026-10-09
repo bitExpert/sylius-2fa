@@ -1,0 +1,43 @@
+services:
+    _defaults:
+        public: false
+
+    bitexpert_sylius_2fa.controller:
+        abstract: true
+        class: BitExpert\SyliusTwoFactorAuthPlugin\Controller\TwoFactorController
+        arguments:
+            $hookableMetadataFactory: '@sylius_twig_hooks.factory.hookable_metadata'
+            $googleAuthenticator: '@scheb_two_factor.security.google_authenticator'
+            $codeGenerator: '@scheb_two_factor.security.email.code_generator'
+            $tokenStorage: '@security.token_storage'
+            $googleFormFlow: '\BitExpert\SyliusTwoFactorAuthPlugin\Form\Type\Google\GoogleSetupFormFlowType'
+            $emailFormFlow: '\BitExpert\SyliusTwoFactorAuthPlugin\Form\Type\Email\EmailSetupFormFlow'
+        calls:
+            - [setContainer, ['@service_container']]
+
+    bitexpert_sylius_2fa.controller.admin:
+        parent: bitexpert_sylius_2fa.controller
+        class: BitExpert\SyliusTwoFactorAuthPlugin\Controller\TwoFactorController
+        autoconfigure: true
+        autowire: true
+        arguments:
+            $repository: '@sylius.repository.admin_user'
+            $entity: 'admin_user'
+            $redirectRoute: 'sylius_admin_dashboard'
+            $template: '@@BitExpertSyliusTwoFactorAuthPlugin/admin/two_factor_setup.html.twig'
+        tags:
+            - { name: controller.service_arguments }
+
+    bitexpert_sylius_2fa.controller.shop:
+        parent: bitexpert_sylius_2fa.controller
+        class: BitExpert\SyliusTwoFactorAuthPlugin\Controller\TwoFactorController
+        autoconfigure: true
+        autowire: true
+        arguments:
+            $repository: '@sylius.repository.shop_user'
+            $entity: 'shop_user'
+            $redirectRoute: 'bitexpert_sylius_2fa_shop_account_2fa_overview'
+            $template: '@@BitExpertSyliusTwoFactorAuthPlugin/shop/two_factor_setup.html.twig'
+            $twoFactorEnabledMailer: '@BitExpert\SyliusTwoFactorAuthPlugin\Mailer\SyliusTwoFactorEnabledMailer'
+        tags:
+            - { name: controller.service_arguments }

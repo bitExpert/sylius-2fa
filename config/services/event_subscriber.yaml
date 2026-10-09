@@ -1,0 +1,17 @@
+services:
+    BitExpert\SyliusTwoFactorAuthPlugin\EventSubscriber\TwoFactorAuthenticationLoginAttempt:
+        class: BitExpert\SyliusTwoFactorAuthPlugin\EventSubscriber\TwoFactorAuthenticationLoginAttempt
+        tags:
+            - { name: kernel.event_subscriber }
+
+    BitExpert\SyliusTwoFactorAuthPlugin\EventSubscriber\AdminUserFormComponentEventSubscriber:
+        class: BitExpert\SyliusTwoFactorAuthPlugin\EventSubscriber\AdminUserFormComponentEventSubscriber
+        arguments:
+            - '@security.token_storage'
+        tags:
+            - { name: kernel.event_subscriber }
+
+    BitExpert\SyliusTwoFactorAuthPlugin\Menu\ShopAccountMenuListener:
+        class: BitExpert\SyliusTwoFactorAuthPlugin\Menu\ShopAccountMenuListener
+        tags:
+            - { name: kernel.event_listener, event: sylius.menu.shop.account, method: addMenuItem }

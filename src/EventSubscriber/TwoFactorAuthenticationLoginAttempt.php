@@ -18,7 +18,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 final readonly class TwoFactorAuthenticationLoginAttempt implements EventSubscriberInterface
 {
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             TwoFactorAuthenticationEvents::ATTEMPT => ['onLoginAttempt', 100],

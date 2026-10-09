@@ -1,0 +1,18 @@
+services:
+    BitExpert\SyliusTwoFactorAuthPlugin\Form\DataTransformer\VerificationCodeTransformer:
+        class: BitExpert\SyliusTwoFactorAuthPlugin\Form\DataTransformer\VerificationCodeTransformer
+
+    BitExpert\SyliusTwoFactorAuthPlugin\Form\Type\VerificationCodeType:
+        class: BitExpert\SyliusTwoFactorAuthPlugin\Form\Type\VerificationCodeType
+        arguments:
+            - '@BitExpert\SyliusTwoFactorAuthPlugin\Form\DataTransformer\VerificationCodeTransformer'
+        tags:
+            - { name: form.type }
+
+    BitExpert\SyliusTwoFactorAuthPlugin\Form\Renderer\FirewallAwareFormRenderer:
+        class: BitExpert\SyliusTwoFactorAuthPlugin\Form\Renderer\FirewallAwareFormRenderer
+        arguments:
+            - '@twig'
+            - '@security.firewall.map'
+            - '@@BitExpertSyliusTwoFactorAuthPlugin/admin/security/two_factor.html.twig'
+            - '@@BitExpertSyliusTwoFactorAuthPlugin/shop/security/two_factor.html.twig'

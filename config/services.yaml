@@ -1,0 +1,6 @@
+imports:
+    - { resource: 'services/controller.yaml' }
+    - { resource: 'services/event_subscriber.yaml' }
+    - { resource: 'services/form.yaml' }
+    - { resource: 'services/grid.yaml' }
+    - { resource: 'services/mailer.yaml' }
