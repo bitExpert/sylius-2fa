@@ -20,8 +20,10 @@ The **2FA** Plugin for *Sylius* allows admin users and shop users to enable two-
 * During login users can choose which authentication method to use
 
 ## Requirements:
-* PHP 8.2 or higher
-* Sylius 2.0 or higher
+* PHP 8.3 or higher (PHP 8.4 or higher with Symfony 8 and scheb/2fa-bundle 8)
+* Sylius 2.1 or higher (2.3 supported)
+* Symfony 7.4 or 8.0
+* scheb/2fa-bundle 7.13+ or 8.x
 
 ## Installation
 

@@ -1,0 +1,6 @@
+services:
+    BitExpert\SyliusTwoFactorAuthPlugin\Grid\AdminUserGridListener:
+        class: BitExpert\SyliusTwoFactorAuthPlugin\Grid\AdminUserGridListener
+        public: true
+        tags:
+            - { name: kernel.event_listener, event: sylius.grid.admin_admin_user, method: addField }

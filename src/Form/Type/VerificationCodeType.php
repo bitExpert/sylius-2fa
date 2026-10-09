@@ -24,7 +24,7 @@ final class VerificationCodeType extends AbstractType
     ) {
     }
 
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         for ($i = 0; $i < 6; ++$i) {
             $builder->add((string) $i, TextType::class, [

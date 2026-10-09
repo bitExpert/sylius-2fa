@@ -1,0 +1,17 @@
+services:
+    BitExpert\SyliusTwoFactorAuthPlugin\Mailer\SyliusAuthCodeMailer:
+        class: BitExpert\SyliusTwoFactorAuthPlugin\Mailer\SyliusAuthCodeMailer
+        arguments:
+            - '@sylius.email_sender'
+            - '@sylius.context.channel'
+            - '@sylius.context.locale'
+
+    BitExpert\SyliusTwoFactorAuthPlugin\Mailer\SyliusTwoFactorEnabledMailer:
+        class: BitExpert\SyliusTwoFactorAuthPlugin\Mailer\SyliusTwoFactorEnabledMailer
+        arguments:
+            - '@mailer'
+            - '@sylius.context.channel'
+            - '@sylius.context.locale'
+            - '@logger'
+            - '@twig'
+            - '@translator'

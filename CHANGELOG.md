@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 0.3.0
+
+### Added
+
+- Support for Symfony 8, scheb/2fa-bundle 8 and Sylius 2.3
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Support for PHP 8.2
+- Behat/Mink development dependencies (unused, not compatible with Symfony 8)
+
+### Fixed
+
+- Add missing native return types required by Symfony 8
+- Service definitions are now loaded from YAML instead of XML (`XmlFileLoader` was removed in Symfony 8)
+
 ## 0.2.1
 
 ### Added
